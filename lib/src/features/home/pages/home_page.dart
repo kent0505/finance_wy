@@ -79,7 +79,11 @@ class _HomeState extends State<_Home> {
           height: 230,
           width: double.infinity,
           color: Colors.white,
-          child: SvgPicture.asset('assets/bg.svg'),
+          child: SvgPicture.asset(
+            'assets/bg.svg',
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
         ),
         Column(
           children: [

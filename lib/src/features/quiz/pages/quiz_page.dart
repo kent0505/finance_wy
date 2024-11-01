@@ -84,7 +84,11 @@ class _QuizPageState extends State<QuizPage> {
           height: 230,
           width: double.infinity,
           color: Colors.white,
-          child: SvgPicture.asset('assets/bg2.svg'),
+          child: SvgPicture.asset(
+            'assets/bg2.svg',
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
         ),
         Center(
           child: Column(
