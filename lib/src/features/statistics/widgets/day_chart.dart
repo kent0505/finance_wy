@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,91 +59,134 @@ class _DayChartState extends State<DayChart> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        height: 290,
-        width: 340,
-        padding: const EdgeInsets.only(left: 37, right: 13),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(13),
-        ),
-        child: Stack(
-          children: [
-            Positioned(top: 24, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 2, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 3, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 4, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 5, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 6, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 7, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 8, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(top: 24 * 9, child: SvgPicture.asset('assets/line.svg')),
-            Positioned(
-              top: 24 * 10,
-              child: SvgPicture.asset('assets/line.svg'),
+      child: Stack(
+        children: [
+          Container(
+            height: 290,
+            width: 340,
+            padding: const EdgeInsets.only(left: 37, right: 13),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(13),
             ),
-            Positioned(
-              bottom: 26,
-              child: Container(
-                width: 1,
-                height: 240,
-                color: Colors.black,
-              ),
-            ),
-            Column(
+            child: Stack(
               children: [
-                const SizedBox(height: 18),
-                Expanded(
-                  child: BarChart(
-                    BarChartData(
-                      maxY: 250,
-                      borderData: FlBorderData(show: false),
-                      titlesData: const FlTitlesData(
-                        topTitles: AxisTitles(sideTitles: SideTitles()),
-                        leftTitles: AxisTitles(sideTitles: SideTitles()),
-                        rightTitles: AxisTitles(sideTitles: SideTitles()),
-                        bottomTitles: AxisTitles(sideTitles: SideTitles()),
-                      ),
-                      barTouchData: BarTouchData(enabled: false),
-                      barGroups: [
-                        BarChartGroupData(
-                          x: 0,
-                          barsSpace: 4,
-                          barRods: [
-                            BarChartRodData(
-                              toY: normalizedIncome.toDouble(),
-                              width: 7,
-                              color: AppColors.main,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            BarChartRodData(
-                              toY: normalizedExpense.toDouble(),
-                              width: 7,
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ],
-                        ),
-                      ],
-                      gridData: const FlGridData(show: false),
-                    ),
+                Positioned(top: 24, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 2, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 3, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 4, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 5, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 6, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 7, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 8, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                    top: 24 * 9, child: SvgPicture.asset('assets/line.svg')),
+                Positioned(
+                  top: 24 * 10,
+                  child: SvgPicture.asset('assets/line.svg'),
+                ),
+                Positioned(
+                  bottom: 26,
+                  child: Container(
+                    width: 1,
+                    height: 240,
+                    color: Colors.black,
                   ),
                 ),
-                Container(
-                  height: 1,
-                  color: Colors.black,
-                  width: 290,
+                Column(
+                  children: [
+                    const SizedBox(height: 18),
+                    Expanded(
+                      child: BarChart(
+                        BarChartData(
+                          maxY: 250,
+                          borderData: FlBorderData(show: false),
+                          titlesData: const FlTitlesData(
+                            topTitles: AxisTitles(sideTitles: SideTitles()),
+                            leftTitles: AxisTitles(sideTitles: SideTitles()),
+                            rightTitles: AxisTitles(sideTitles: SideTitles()),
+                            bottomTitles: AxisTitles(sideTitles: SideTitles()),
+                          ),
+                          barTouchData: BarTouchData(enabled: false),
+                          barGroups: [
+                            BarChartGroupData(
+                              x: 0,
+                              barsSpace: 4,
+                              barRods: [
+                                BarChartRodData(
+                                  toY: normalizedIncome.toDouble(),
+                                  width: 7,
+                                  color: AppColors.main,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                BarChartRodData(
+                                  toY: normalizedExpense.toDouble(),
+                                  width: 7,
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ],
+                            ),
+                          ],
+                          gridData: const FlGridData(show: false),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 1,
+                      color: Colors.black,
+                      width: 290,
+                    ),
+                    const SizedBox(height: 8),
+                    TextM(
+                      getWeekdayAbbreviation(),
+                      fontSize: 8,
+                    ),
+                    const SizedBox(height: 8),
+                  ],
                 ),
-                const SizedBox(height: 8),
-                TextM(
-                  getWeekdayAbbreviation(),
-                  fontSize: 8,
-                ),
-                const SizedBox(height: 8),
               ],
             ),
-          ],
-        ),
+          ),
+          Container(
+            height: 290,
+            width: 340,
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 26),
+                TextM('\$ 4500', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 4000', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 3500', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 3000', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 2500', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 2000', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 1500', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 1000', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 500', fontSize: 8),
+                SizedBox(height: 15),
+                TextM('\$ 0', fontSize: 8),
+                SizedBox(height: 15),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,9 +1,10 @@
 import 'dart:developer' as developer;
 
-import 'package:finance_wy/src/core/db/db.dart';
-import 'package:finance_wy/src/core/models/money.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import 'db/db.dart';
+import 'models/money.dart';
 
 int getCurrentTimestamp() {
   return DateTime.now().millisecondsSinceEpoch ~/ 1000;
