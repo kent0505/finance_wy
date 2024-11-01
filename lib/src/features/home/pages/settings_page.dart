@@ -4,14 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/widgets/buttons/cuper_button.dart';
 import '../../../core/widgets/texts/text_m.dart';
 
-class SettingsPage extends StatefulWidget {
+class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
-  @override
-  State<SettingsPage> createState() => _SettingsPageState();
-}
-
-class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Column(

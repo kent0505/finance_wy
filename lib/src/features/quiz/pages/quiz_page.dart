@@ -90,7 +90,7 @@ class _QuizPageState extends State<QuizPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 70),
+              const SizedBox(height: 80),
               TextM(
                 'Question ${index + 1}/20',
                 fontSize: 32,

@@ -9,6 +9,7 @@ import '../../../core/utils.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../../money/bloc/money_bloc.dart';
 import '../../quiz/pages/quiz_page.dart';
+import '../../statistics/pages/statistics_page.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/add_income_button.dart';
 import '../widgets/income_expense_card.dart';
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
             builder: (context, state) {
               if (state is HomeSettings) return const SettingsPage();
 
-              if (state is HomeStatistics) return const Text('Statistics');
+              if (state is HomeStatistics) return const StatisticsPage();
 
               if (state is HomeQuiz) return const QuizPage();
 
