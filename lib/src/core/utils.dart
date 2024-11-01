@@ -132,28 +132,69 @@ String getWeekdayAbbreviation() {
   return weekdays[today.weekday - 1];
 }
 
-// int getMoneyByIndex(int index, bool income) {
-//   if (index == 1) {
-//     int incomes = 0;
-//     int expenses = 0;
-//     DateTime today = DateTime.now();
-//     List<Money> todaysMoneys = [];
-//     for (Money money in moneyList) {
-//       DateTime date = DateTime.fromMillisecondsSinceEpoch(money.id * 1000);
-//       if (date.year == today.year &&
-//           date.month == today.month &&
-//           date.day == today.day) {
-//         todaysMoneys.add(money);
-//       }
-//     }
-//     for (Money money in todaysMoneys) {
-//       if (money.income) {
-//         incomes += money.amount;
-//       } else {
-//         expenses += money.amount;
-//       }
-//     }
-//     return income ? incomes : expenses;
-//   } else if (index == 2) {
-//   } else {}
-// }
+int getMoneyByIndex(int index, bool income) {
+  DateTime today = DateTime.now();
+  if (index == 1) {
+    int incomes = 0;
+    int expenses = 0;
+    List<Money> todaysMoneys = [];
+    for (Money money in moneyList) {
+      DateTime date = DateTime.fromMillisecondsSinceEpoch(money.id * 1000);
+      if (date.year == today.year &&
+          date.month == today.month &&
+          date.day == today.day) {
+        todaysMoneys.add(money);
+      }
+    }
+    for (Money money in todaysMoneys) {
+      if (money.income) {
+        incomes += money.amount;
+      } else {
+        expenses += money.amount;
+      }
+    }
+    return income ? incomes : expenses;
+  } else if (index == 2) {
+    List<int> weeklyExpenses = List.filled(7, 0);
+    List<int> weeklyIncomes = List.filled(7, 0);
+    DateTime startOfWeek = today.subtract(Duration(days: today.weekday - 1));
+    for (Money money in moneyList) {
+      DateTime date = DateTime.fromMillisecondsSinceEpoch(money.id * 1000);
+      if (date.isAfter(startOfWeek) &&
+          date.isBefore(startOfWeek.add(const Duration(days: 7)))) {
+        if (money.income) {
+          weeklyIncomes[date.weekday - 1] += money.amount;
+        } else {
+          weeklyExpenses[date.weekday - 1] += money.amount;
+        }
+      }
+    }
+    int incomes = 0;
+    int expenses = 0;
+    if (income) {
+      for (int amount in weeklyIncomes) {
+        incomes += amount;
+      }
+      return incomes;
+    } else {
+      for (int amount in weeklyExpenses) {
+        expenses += amount;
+      }
+      return expenses;
+    }
+  } else {
+    int incomes = 0;
+    int expenses = 0;
+    for (Money money in moneyList) {
+      DateTime date = DateTime.fromMillisecondsSinceEpoch(money.id * 1000);
+      if (date.year == today.year && date.month == today.month) {
+        if (money.income) {
+          incomes += money.amount;
+        } else {
+          expenses += money.amount;
+        }
+      }
+    }
+    return income ? incomes : expenses;
+  }
+}

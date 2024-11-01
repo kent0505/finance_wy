@@ -127,11 +127,20 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ),
         ),
         const SizedBox(height: 24),
-        // _Tile(title: 'Income', amount: getMoneyByIndex(index, true)),
+        _Tile(
+          title: 'Income',
+          amount: getMoneyByIndex(index, true),
+        ),
         const SizedBox(height: 6),
-        const _Tile(title: 'Expense', amount: 200),
+        _Tile(
+          title: 'Expense',
+          amount: getMoneyByIndex(index, false),
+        ),
         const SizedBox(height: 6),
-        const _Tile(title: 'Total', amount: 300),
+        _Tile(
+          title: 'Total',
+          amount: getMoneyByIndex(index, true) - getMoneyByIndex(index, false),
+        ),
         const SizedBox(height: 38 + 78),
       ],
     );

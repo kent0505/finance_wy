@@ -14,30 +14,8 @@ class WeekChart extends StatefulWidget {
 }
 
 class _WeekChartState extends State<WeekChart> {
-  int expenses = 0;
-  int incomes = 0;
   List<int> weeklyExpenses = List.filled(7, 0);
   List<int> weeklyIncomes = List.filled(7, 0);
-
-  void getTodaysMoney() {
-    DateTime today = DateTime.now();
-    List<Money> todaysMoneys = [];
-    for (Money money in moneyList) {
-      DateTime date = DateTime.fromMillisecondsSinceEpoch(money.id * 1000);
-      if (date.year == today.year &&
-          date.month == today.month &&
-          date.day == today.day) {
-        todaysMoneys.add(money);
-      }
-    }
-    for (Money money in todaysMoneys) {
-      if (money.income) {
-        incomes += money.amount;
-      } else {
-        expenses += money.amount;
-      }
-    }
-  }
 
   void getWeeklyMoney() {
     DateTime today = DateTime.now();
@@ -58,7 +36,7 @@ class _WeekChartState extends State<WeekChart> {
   @override
   void initState() {
     super.initState();
-    getTodaysMoney();
+    // getTodaysMoney();
     getWeeklyMoney();
   }
 
