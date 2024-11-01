@@ -134,8 +134,10 @@ class _HomeState extends State<_Home> {
               ),
             ),
             const SizedBox(height: 10),
-            if (active)
-              Expanded(
+            Expanded(
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 200),
+                opacity: active ? 1 : 0,
                 child: BlocBuilder<MoneyBloc, MoneyState>(
                   builder: (context, state) {
                     if (state is MoneyLoadedState) {
@@ -143,7 +145,10 @@ class _HomeState extends State<_Home> {
                         padding: const EdgeInsets.only(bottom: 22),
                         itemCount: state.moneyList.length,
                         itemBuilder: (context, index) {
-                          return MoneyCard(money: state.moneyList[index]);
+                          return MoneyCard(
+                            money: state.moneyList[index],
+                            active: active,
+                          );
                         },
                       );
                     }
@@ -152,6 +157,7 @@ class _HomeState extends State<_Home> {
                   },
                 ),
               ),
+            ),
             const SizedBox(height: 78),
           ],
         ),

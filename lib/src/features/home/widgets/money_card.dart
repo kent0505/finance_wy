@@ -1,20 +1,22 @@
-import 'package:finance_wy/src/core/models/extra_model.dart';
-import 'package:finance_wy/src/core/widgets/buttons/cuper_button.dart';
-import 'package:finance_wy/src/core/widgets/texts/text_m.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/models/extra_model.dart';
 import '../../../core/models/money.dart';
 import '../../../core/utils.dart';
+import '../../../core/widgets/buttons/cuper_button.dart';
+import '../../../core/widgets/texts/text_m.dart';
 
 class MoneyCard extends StatelessWidget {
   const MoneyCard({
     super.key,
     required this.money,
+    required this.active,
   });
 
   final Money money;
+  final bool active;
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +30,18 @@ class MoneyCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: CuperButton(
-          onPressed: () {
-            context.push(
-              '/add',
-              extra: ExtraModel(
-                income: money.income,
-                add: false,
-                money: money,
-              ),
-            );
-          },
+          onPressed: active
+              ? () {
+                  context.push(
+                    '/add',
+                    extra: ExtraModel(
+                      income: money.income,
+                      add: false,
+                      money: money,
+                    ),
+                  );
+                }
+              : null,
           child: Row(
             children: [
               const SizedBox(width: 14),

@@ -18,7 +18,8 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       height: 56,
       width: 316,
       decoration: BoxDecoration(

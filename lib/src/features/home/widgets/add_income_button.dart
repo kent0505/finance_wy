@@ -26,7 +26,8 @@ class AddIncomeButton extends StatelessWidget {
       width: 64,
       height: 64,
       child: Center(
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
           height: active ? 64 : 56,
           width: active ? 64 : 56,
           decoration: BoxDecoration(
@@ -46,7 +47,8 @@ class AddIncomeButton extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 4),
-                SizedBox(
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
                   height: active ? 27 : 24,
                   child: SvgPicture.asset(
                     history
