@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/utils.dart';
+import '../../../core/models/extra_model.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_scaffold.dart';
@@ -12,10 +13,10 @@ import '../widgets/category_button.dart';
 class AddMoneyPage extends StatefulWidget {
   const AddMoneyPage({
     super.key,
-    required this.income,
+    required this.extra,
   });
 
-  final bool income;
+  final ExtraModel extra;
 
   @override
   State<AddMoneyPage> createState() => _AddMoneyPageState();
@@ -61,6 +62,16 @@ class _AddMoneyPageState extends State<AddMoneyPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    if (!widget.extra.add) {
+      controller1.text = widget.extra.money.title;
+      controller2.text = widget.extra.money.amount.toString();
+      controller3.text = widget.extra.money.category;
+    }
+  }
+
+  @override
   void dispose() {
     controller1.dispose();
     controller2.dispose();
@@ -81,7 +92,13 @@ class _AddMoneyPageState extends State<AddMoneyPage> {
                 const SizedBox(height: 8),
                 Center(
                   child: TextM(
-                    widget.income ? 'Add Income' : 'Add Expense',
+                    widget.extra.add
+                        ? widget.extra.income
+                            ? 'Add Income'
+                            : 'Add Expense'
+                        : widget.extra.income
+                            ? 'Edit Income'
+                            : 'Edit Expense',
                     fontSize: 32,
                   ),
                 ),
@@ -145,7 +162,7 @@ class _AddMoneyPageState extends State<AddMoneyPage> {
                       runSpacing: 10,
                       spacing: 28,
                       children: [
-                        if (widget.income) ...[
+                        if (widget.extra.income) ...[
                           CategoryButton(
                             title: 'Passive',
                             current: controller3.text,
@@ -220,7 +237,7 @@ class _AddMoneyPageState extends State<AddMoneyPage> {
                 const SizedBox(height: 38),
                 Center(
                   child: PrimaryButton(
-                    title: 'Next',
+                    title: widget.extra.add ? 'Save' : 'Edit',
                     active: active,
                     width: 360,
                     onPressed: onSave,

@@ -4,6 +4,7 @@ import '../../features/home/pages/home_page.dart';
 import '../../features/money/pages/add_money_page.dart';
 import '../../features/splash/onboard_page.dart';
 import '../../features/splash/splash_page.dart';
+import '../models/extra_model.dart';
 
 final routerConfig = GoRouter(
   initialLocation: '/',
@@ -23,7 +24,7 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/add',
       builder: (context, state) => AddMoneyPage(
-        income: state.extra as bool,
+        extra: state.extra as ExtraModel,
       ),
     ),
   ],

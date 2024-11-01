@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/models/extra_model.dart';
+import '../../../core/models/money.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../../../core/widgets/texts/text_m.dart';
 import '../bloc/home_bloc.dart';
@@ -54,6 +56,17 @@ class _HomeState extends State<_Home> {
     });
   }
 
+  void onAdd(bool income) {
+    context.push(
+      '/add',
+      extra: ExtraModel(
+        income: income,
+        add: true,
+        money: defaultMoney,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -90,13 +103,13 @@ class _HomeState extends State<_Home> {
                     title: 'Income',
                     income: true,
                     onPressed: () {
-                      context.push('/add', extra: true);
+                      onAdd(true);
                     },
                   ),
                   AddIncomeButton(
                     title: 'Expense',
                     onPressed: () {
-                      context.push('/add', extra: false);
+                      onAdd(false);
                     },
                   ),
                   AddIncomeButton(
