@@ -5,11 +5,13 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/models/extra_model.dart';
 import '../../../core/models/money.dart';
+import '../../../core/utils.dart';
 import '../../../core/widgets/custom_scaffold.dart';
-import '../../../core/widgets/texts/text_m.dart';
+import '../../money/bloc/money_bloc.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/add_income_button.dart';
 import '../widgets/income_expense_card.dart';
+import '../widgets/money_card.dart';
 import '../widgets/nav_bar.dart';
 import '../widgets/total_balance.dart';
 import 'settings_page.dart';
@@ -74,23 +76,31 @@ class _HomeState extends State<_Home> {
         Container(
           height: 230,
           width: double.infinity,
-          color: AppColors.white,
+          color: Colors.white,
           child: SvgPicture.asset('assets/bg.svg'),
         ),
         Column(
           children: [
             const SizedBox(height: 75),
-            const TotalBalance(),
+            BlocBuilder<MoneyBloc, MoneyState>(
+              builder: (context, state) {
+                return TotalBalance(total: totalIncomes - totalExpenses);
+              },
+            ),
             const SizedBox(height: 30),
-            const SizedBox(
-              width: 316,
-              child: Row(
-                children: [
-                  IncomeExpenseCard(amount: 100, income: true),
-                  SizedBox(width: 30),
-                  IncomeExpenseCard(amount: 200),
-                ],
-              ),
+            BlocBuilder<MoneyBloc, MoneyState>(
+              builder: (context, state) {
+                return SizedBox(
+                  width: 316,
+                  child: Row(
+                    children: [
+                      IncomeExpenseCard(amount: totalIncomes, income: true),
+                      const SizedBox(width: 30),
+                      IncomeExpenseCard(amount: totalExpenses),
+                    ],
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 18),
             SizedBox(
@@ -121,6 +131,26 @@ class _HomeState extends State<_Home> {
                 ],
               ),
             ),
+            const SizedBox(height: 10),
+            if (active)
+              Expanded(
+                child: BlocBuilder<MoneyBloc, MoneyState>(
+                  builder: (context, state) {
+                    if (state is MoneyLoadedState) {
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: state.moneyList.length,
+                        itemBuilder: (context, index) {
+                          return MoneyCard(money: state.moneyList[index]);
+                        },
+                      );
+                    }
+
+                    return Container();
+                  },
+                ),
+              ),
+            const SizedBox(height: 78),
           ],
         ),
       ],

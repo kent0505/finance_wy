@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../core/widgets/texts/text_m.dart';
 
 class TotalBalance extends StatelessWidget {
-  const TotalBalance({super.key});
+  const TotalBalance({
+    super.key,
+    required this.total,
+  });
+
+  final int total;
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +20,15 @@ class TotalBalance extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             width: 3,
-            color: AppColors.black,
+            color: Colors.black,
           ),
         ),
-        child: const Column(
+        child: Column(
           children: [
-            SizedBox(height: 14),
-            TextM('Your Balance', fontSize: 18),
+            const SizedBox(height: 14),
+            const TextM('Your Balance', fontSize: 18),
             TextM(
-              '\$ 31,800',
+              '\$ $total',
               fontSize: 32,
               fontFamily: Fonts.heavy,
             ),

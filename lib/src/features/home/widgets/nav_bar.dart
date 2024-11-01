@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -101,7 +101,7 @@ class _NavBarButton extends StatelessWidget {
               width: 28,
               child: SvgPicture.asset(
                 'assets/$asset.svg',
-                color: active ? AppColors.main : AppColors.white,
+                color: active ? AppColors.main : Colors.white,
               ),
             ),
             const SizedBox(height: 3),
@@ -110,7 +110,7 @@ class _NavBarButton extends StatelessWidget {
                 title,
                 fontSize: 8,
                 fontFamily: Fonts.light,
-                color: active ? AppColors.main : AppColors.white,
+                color: active ? AppColors.main : Colors.white,
                 textAlign: TextAlign.center,
               ),
           ],

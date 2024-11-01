@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../texts/text_m.dart';
 
@@ -33,7 +34,7 @@ class PrimaryButton extends StatelessWidget {
             title,
             fontSize: 16,
             fontFamily: Fonts.regular,
-            color: AppColors.white,
+            color: Colors.white,
           ),
         ),
       ),

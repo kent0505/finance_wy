@@ -9,7 +9,7 @@ class TextM extends StatelessWidget {
     super.key,
     required this.fontSize,
     this.fontFamily = Fonts.medium,
-    this.color = AppColors.black,
+    this.color = Colors.black,
     this.textAlign,
     this.maxLines,
   });

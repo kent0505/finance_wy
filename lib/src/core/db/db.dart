@@ -17,7 +17,7 @@ Future<void> initHive() async {
   }
 }
 
-Future<void> getModels() async {
+Future<void> getMoneyList() async {
   try {
     final box = await Hive.openBox(boxName);
     List data = box.get(keyName) ?? [];
@@ -28,7 +28,7 @@ Future<void> getModels() async {
   }
 }
 
-Future<void> updateModels() async {
+Future<void> updateMoneyList() async {
   try {
     final box = await Hive.openBox(boxName);
     box.put(keyName, moneyList);

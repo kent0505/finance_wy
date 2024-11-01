@@ -30,13 +30,13 @@ class AddIncomeButton extends StatelessWidget {
           height: active ? 64 : 56,
           width: active ? 64 : 56,
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               if (active)
                 BoxShadow(
                   blurRadius: 4,
-                  color: AppColors.black25,
+                  color: Colors.black.withOpacity(0.25),
                   offset: const Offset(0, 4),
                 ),
             ],

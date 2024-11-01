@@ -24,7 +24,8 @@ class DeleteDialog extends StatelessWidget {
             const SizedBox(height: 20),
             TextM(
               title,
-              fontSize: 18,
+              fontSize: 24,
+              fontFamily: Fonts.heavy,
             ),
             const Spacer(),
             Row(
@@ -75,6 +76,7 @@ class _Button extends StatelessWidget {
           TextM(
             title,
             fontSize: 14,
+            fontFamily: Fonts.medium,
           ),
         ],
       ),

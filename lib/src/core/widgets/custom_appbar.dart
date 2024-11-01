@@ -7,7 +7,12 @@ import 'buttons/cuper_button.dart';
 import 'texts/text_m.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key});
+  const CustomAppbar({
+    super.key,
+    this.onDelete,
+  });
+
+  final void Function()? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +37,24 @@ class CustomAppbar extends StatelessWidget {
                     'Back',
                     fontSize: 15,
                     fontFamily: Fonts.regular,
-                    color: AppColors.black,
+                    color: Colors.black,
                   ),
                 ],
               ),
             ),
           ),
+          if (onDelete != null) ...[
+            const Spacer(),
+            CuperButton(
+              onPressed: onDelete,
+              minSize: 44,
+              child: const Icon(
+                Icons.delete,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(width: 6),
+          ],
         ],
       ),
     );

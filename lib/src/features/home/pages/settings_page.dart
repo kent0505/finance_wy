@@ -77,7 +77,7 @@ class _Tile extends StatelessWidget {
       width: 326,
       margin: const EdgeInsets.symmetric(horizontal: 32),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: CuperButton(

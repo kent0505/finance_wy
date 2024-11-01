@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/models/money.dart';
 import '../../../core/utils.dart';
 import '../../../core/models/extra_model.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_scaffold.dart';
+import '../../../core/widgets/dialogs/delete_dialog.dart';
 import '../../../core/widgets/textfields/txt_field.dart';
 import '../../../core/widgets/texts/text_m.dart';
+import '../bloc/money_bloc.dart';
 import '../widgets/amount_button.dart';
 import '../widgets/category_button.dart';
 
@@ -57,14 +62,52 @@ class _AddMoneyPageState extends State<AddMoneyPage> {
   }
 
   void onSave() {
-    // context.read<CafesBloc>().add();
-    // context.pop();
+    context.read<MoneyBloc>().add(
+          widget.extra.add
+              ? AddMoneyEvent(
+                  money: Money(
+                    id: getCurrentTimestamp(),
+                    title: controller1.text,
+                    amount: int.tryParse(controller2.text) ?? 0,
+                    category: controller3.text,
+                    income: widget.extra.income,
+                  ),
+                )
+              : EditMoneyEvent(
+                  money: Money(
+                    id: widget.extra.money.id,
+                    title: controller1.text,
+                    amount: int.tryParse(controller2.text) ?? 0,
+                    category: controller3.text,
+                    income: widget.extra.income,
+                  ),
+                ),
+        );
+    context.pop();
+  }
+
+  void onDelete() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DeleteDialog(
+          title: widget.extra.income ? 'Delete Income?' : 'Delete Expense?',
+          onYes: () {
+            context
+                .read<MoneyBloc>()
+                .add(DeleteMoneyEvent(money: widget.extra.money));
+            context.pop();
+          },
+        );
+      },
+    );
   }
 
   @override
   void initState() {
     super.initState();
     if (!widget.extra.add) {
+      active = true;
       controller1.text = widget.extra.money.title;
       controller2.text = widget.extra.money.amount.toString();
       controller3.text = widget.extra.money.category;
@@ -84,7 +127,9 @@ class _AddMoneyPageState extends State<AddMoneyPage> {
     return CustomScaffold(
       body: Column(
         children: [
-          const CustomAppbar(),
+          CustomAppbar(
+            onDelete: !widget.extra.add ? onDelete : null,
+          ),
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,

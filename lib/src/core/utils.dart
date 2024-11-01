@@ -1,5 +1,7 @@
 import 'dart:developer' as developer;
 
+import 'package:finance_wy/src/core/db/db.dart';
+import 'package:finance_wy/src/core/models/money.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -107,4 +109,19 @@ String getCategoryAsset(String cat) {
   if (cat == 'Royalty') return 'assets/cat5.svg';
   if (cat == 'Dividents') return 'assets/cat5.svg';
   return 'assets/cat1.svg';
+}
+
+int totalIncomes = 0;
+int totalExpenses = 0;
+
+void calculateMoney() {
+  totalIncomes = 0;
+  totalExpenses = 0;
+  for (Money money in moneyList) {
+    if (money.income) {
+      totalIncomes += money.amount;
+    } else {
+      totalExpenses += money.amount;
+    }
+  }
 }

@@ -42,7 +42,7 @@ class _TxtFieldState extends State<TxtField> {
       height: 48,
       width: 360,
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
@@ -52,7 +52,7 @@ class _TxtFieldState extends State<TxtField> {
         textCapitalization: TextCapitalization.sentences,
         textAlign: TextAlign.center,
         style: const TextStyle(
-          color: AppColors.black,
+          color: Colors.black,
           fontFamily: Fonts.regular,
         ),
         decoration: InputDecoration(
@@ -62,7 +62,7 @@ class _TxtFieldState extends State<TxtField> {
           ),
           hintText: widget.hintText,
           hintStyle: TextStyle(
-            color: AppColors.black14,
+            color: Colors.black.withOpacity(0.14),
             fontFamily: Fonts.regular,
           ),
           focusedBorder: const OutlineInputBorder(

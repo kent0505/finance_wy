@@ -28,7 +28,7 @@ class CategoryButton extends StatelessWidget {
         border: identical(title, current)
             ? Border.all(
                 width: 1,
-                color: AppColors.black,
+                color: Colors.black,
               )
             : null,
       ),
@@ -40,6 +40,7 @@ class CategoryButton extends StatelessWidget {
           children: [
             const SizedBox(width: 6),
             SvgPicture.asset(getCategoryAsset(title)),
+            const SizedBox(width: 2),
             Expanded(
               child: TextM(
                 title,

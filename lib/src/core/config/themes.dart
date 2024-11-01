@@ -7,7 +7,7 @@ final theme = ThemeData(
   primarySwatch: Colors.grey,
   fontFamily: Fonts.regular,
   colorScheme: ColorScheme.fromSwatch(
-    accentColor: AppColors.white50,
+    accentColor: Colors.white.withOpacity(0.5),
   ),
   dialogTheme: const DialogTheme(
     shape: RoundedRectangleBorder(
