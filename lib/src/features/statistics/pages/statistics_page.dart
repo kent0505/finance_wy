@@ -18,6 +18,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
   int index = 1;
 
   void onTabChange(int value) {
+    if (index == value) return;
     setState(() {
       index = value;
     });

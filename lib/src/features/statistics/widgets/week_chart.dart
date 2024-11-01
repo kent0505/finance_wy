@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/db/db.dart';
 import '../../../core/models/money.dart';
@@ -86,6 +87,19 @@ class _WeekChartState extends State<WeekChart> {
         ),
         child: Stack(
           children: [
+            Positioned(top: 24, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 2, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 3, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 4, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 5, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 6, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 7, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 8, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(top: 24 * 9, child: SvgPicture.asset('assets/line.svg')),
+            Positioned(
+              top: 24 * 10,
+              child: SvgPicture.asset('assets/line.svg'),
+            ),
             Positioned(
               bottom: 26,
               child: Container(
