@@ -99,18 +99,10 @@ class _MonthChartState extends State<MonthChart> {
                       maxY: 210,
                       borderData: FlBorderData(show: false),
                       titlesData: const FlTitlesData(
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        rightTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        topTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
+                        bottomTitles: AxisTitles(sideTitles: SideTitles()),
+                        leftTitles: AxisTitles(sideTitles: SideTitles()),
+                        rightTitles: AxisTitles(sideTitles: SideTitles()),
+                        topTitles: AxisTitles(sideTitles: SideTitles()),
                       ),
                       barTouchData: BarTouchData(enabled: false),
                       barGroups: List.generate(4, (index) {

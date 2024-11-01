@@ -97,18 +97,10 @@ class _DayChartState extends State<DayChart> {
                       maxY: 250,
                       borderData: FlBorderData(show: false),
                       titlesData: const FlTitlesData(
-                        topTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
-                        rightTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
+                        topTitles: AxisTitles(sideTitles: SideTitles()),
+                        leftTitles: AxisTitles(sideTitles: SideTitles()),
+                        rightTitles: AxisTitles(sideTitles: SideTitles()),
+                        bottomTitles: AxisTitles(sideTitles: SideTitles()),
                       ),
                       barTouchData: BarTouchData(enabled: false),
                       barGroups: [

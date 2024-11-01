@@ -117,18 +117,10 @@ class _WeekChartState extends State<WeekChart> {
                       maxY: 210,
                       borderData: FlBorderData(show: false),
                       titlesData: const FlTitlesData(
-                        topTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
-                        rightTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(),
-                        ),
+                        bottomTitles: AxisTitles(sideTitles: SideTitles()),
+                        leftTitles: AxisTitles(sideTitles: SideTitles()),
+                        rightTitles: AxisTitles(sideTitles: SideTitles()),
+                        topTitles: AxisTitles(sideTitles: SideTitles()),
                       ),
                       barTouchData: BarTouchData(enabled: false),
                       barGroups: List.generate(7, (index) {

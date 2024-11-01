@@ -131,3 +131,29 @@ String getWeekdayAbbreviation() {
   List<String> weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   return weekdays[today.weekday - 1];
 }
+
+// int getMoneyByIndex(int index, bool income) {
+//   if (index == 1) {
+//     int incomes = 0;
+//     int expenses = 0;
+//     DateTime today = DateTime.now();
+//     List<Money> todaysMoneys = [];
+//     for (Money money in moneyList) {
+//       DateTime date = DateTime.fromMillisecondsSinceEpoch(money.id * 1000);
+//       if (date.year == today.year &&
+//           date.month == today.month &&
+//           date.day == today.day) {
+//         todaysMoneys.add(money);
+//       }
+//     }
+//     for (Money money in todaysMoneys) {
+//       if (money.income) {
+//         incomes += money.amount;
+//       } else {
+//         expenses += money.amount;
+//       }
+//     }
+//     return income ? incomes : expenses;
+//   } else if (index == 2) {
+//   } else {}
+// }

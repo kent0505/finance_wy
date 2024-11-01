@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/cuper_button.dart';
 import '../../../core/widgets/texts/text_m.dart';
 import '../widgets/day_chart.dart';
@@ -126,7 +127,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ),
         ),
         const SizedBox(height: 24),
-        const _Tile(title: 'Income', amount: 300),
+        // _Tile(title: 'Income', amount: getMoneyByIndex(index, true)),
         const SizedBox(height: 6),
         const _Tile(title: 'Expense', amount: 200),
         const SizedBox(height: 6),
