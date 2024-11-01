@@ -1,4 +1,4 @@
-import 'package:finance_wy/src/core/models/money.dart';
+import 'money.dart';
 
 class ExtraModel {
   ExtraModel({
