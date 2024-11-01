@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/widgets/buttons/cuper_button.dart';
 import '../../../core/widgets/texts/text_m.dart';
-import '../widgets/bar_chart_widget.dart';
+import '../widgets/day_chart.dart';
+import '../widgets/month_chart.dart';
+import '../widgets/week_chart.dart';
 
 class StatisticsPage extends StatefulWidget {
   const StatisticsPage({super.key});
@@ -63,7 +65,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ),
         ),
         const SizedBox(height: 38),
-        const BarChartWidget(),
+        if (index == 1)
+          const DayChart()
+        else if (index == 2)
+          const WeekChart()
+        else
+          const MonthChart(),
         const SizedBox(height: 15),
         Center(
           child: SizedBox(
