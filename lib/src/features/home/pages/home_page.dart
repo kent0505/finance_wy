@@ -8,6 +8,7 @@ import '../../../core/models/money.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../../money/bloc/money_bloc.dart';
+import '../../quiz/pages/quiz_page.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/add_income_button.dart';
 import '../widgets/income_expense_card.dart';
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
 
               if (state is HomeStatistics) return const Text('Statistics');
 
-              if (state is HomeQuiz) return const Text('Quiz');
+              if (state is HomeQuiz) return const QuizPage();
 
               return const _Home();
             },
@@ -138,7 +139,7 @@ class _HomeState extends State<_Home> {
                   builder: (context, state) {
                     if (state is MoneyLoadedState) {
                       return ListView.builder(
-                        padding: EdgeInsets.zero,
+                        padding: const EdgeInsets.only(bottom: 22),
                         itemCount: state.moneyList.length,
                         itemBuilder: (context, index) {
                           return MoneyCard(money: state.moneyList[index]);
